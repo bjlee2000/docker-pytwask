@@ -5,7 +5,7 @@ before_script:
   - version=${TRAVIS_TAG#"v"}
   - docker pull renwei2/pytwask:latest || true
 script:
-  - 'cd pytwask && docker build --pull --cache-from renwei2/pytwask:latest -f Dockerfile_dev -t renwei2/pytwask:latest .'
+  - 'cd pytwask && docker build --pull --cache-from renwei2/pytwask:latest -t renwei2/pytwask:latest .'
   - '[ ! -z "$version" ] && docker tag renwei2/pytwask:latest "renwei2/pytwask:${version}" || true'
   - docker-compose build
   - docker images
